@@ -1,0 +1,18 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+Entry Page
+{% endblock %}
+
+{% block body %}
+
+    {% if entries == None %}
+    <h1>Error</h1>
+      Error. Requested page not found.
+    {% else %}
+    
+      {{entries|safe}}
+    {% endif %}
+    <br><br>
+  <a href="{% url 'encyclopedia:edit' %}">Edit {{name}}</a>
+{% endblock %}

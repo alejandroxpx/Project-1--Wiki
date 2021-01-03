@@ -1,0 +1,25 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+Create Page
+{% endblock %}
+
+{% block body %}
+{% if messages %}
+   {% for message in messages %}
+       <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+   {% endfor %}
+{% endif %}
+    <h1>Create Page</h1>
+    <form method ="post" action="{% url 'encyclopedia:savenewpage' %}">
+      {% csrf_token %}
+      <label for="title">Title</label>
+      <br>
+        <input id = "title" class="submit" type="text" name="title" placeholder="Title for new page">
+        <br>
+        <label for="markdowncontent">Enter Mark Down Content here</label>
+        <textarea id ="markdowncontent" name="markdowncontent" rows="8" cols="80" placeholder="Mardown Content"></textarea>
+        <button type="submit" name="button">submit</button>
+    </form>
+
+{% endblock %}
